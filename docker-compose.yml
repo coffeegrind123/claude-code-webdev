@@ -1,0 +1,22 @@
+services:
+  web-dev:
+    build: .
+    container_name: web-app-developer-${PROJECT_ID:-default}
+    ports:
+      - "5173:5173"  # Vite dev server
+      - "4173:4173"  # Vite preview server
+    volumes:
+      - C:/Users/User/Downloads/as/data/test123123/webdev/projects/${PROJECT_ID:-default}:/workspace/project
+    working_dir: /workspace/project
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true  # Enable hot reload in Docker
+      - WATCHPACK_POLLING=true
+      - VITE_HOST=0.0.0.0
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    
+networks:
+  default:
+    name: web-dev-network
