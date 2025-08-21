@@ -6,19 +6,27 @@ A web development environment and project template for building modern web appli
 
 - `template/` - Base template for new web projects using Vite + React + Tailwind CSS
 - `projects/` - Directory for individual project instances
-- `start.sh` - Production startup script
-- `start-dev.sh` - Development startup script
+- `start.sh` - Main startup script that launches Claude Code with the master prompt
+- `start-dev.sh` - Development environment startup script (called by Claude Code)
 - `docker-compose.yml` - Docker configuration for containerized development
 - `Dockerfile` - Container image definition
+- `web-app-developer-master-prompt.md` - Master prompt for Claude Code
 
 ## Quick Start
 
-1. Run the development environment:
+1. Run the main startup script to launch Claude Code:
+   ```bash
+   ./start.sh
+   ```
+
+   This will start Claude Code, which reads the master prompt and then executes `./start-dev.sh` to spin up the development environment.
+
+2. Or manually run the development environment:
    ```bash
    ./start-dev.sh
    ```
 
-2. Or use Docker:
+3. Or use Docker:
    ```bash
    docker-compose up
    ```
